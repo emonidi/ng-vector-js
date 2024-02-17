@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0 !important;
+}
+
+body{
+    width: 100%;
+    height: 99vh;
+    position: fixed;
+}
+
+.wall{
+    transition: .25s;
+}
+
+@import "../node_modules/@vector-js/library/css/library.css";

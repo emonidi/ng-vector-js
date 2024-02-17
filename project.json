@@ -6,8 +6,59 @@
   "sourceRoot": "./src",
   "tags": [],
   "targets": {
+    "serve-rs": {
+      "executor": "@nx/rspack:dev-server",
+      "options": {
+        "buildTarget": "nx:build-rs:development"
+      },
+      "configurations": {
+        "development": {
+          "browserTarget": "nx:build:development",
+          "serverTarget": "nx:server:development"
+        },
+        "production": {
+          "browserTarget": "nx:build:production",
+          "serverTarget": "nx:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "build-rs": {
+      "executor": "@nx/rspack:rspack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "web",
+        "outputPath": "dist/nx",
+        "main": "src/main.ts",
+        "tsConfig": "tsconfig.app.json",
+        "rspackConfig": "rspack.config.js",
+        "assets": [
+          "src/favicon.ico",
+          "src/assets"
+        ]
+      },
+      "configurations": {
+        "development": {
+          "mode": "development",
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        },
+        "production": {
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false
+        }
+      }
+    },
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:browser-esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/nx/browser",

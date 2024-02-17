@@ -1,1 +1,11 @@
-<nx-nx-welcome></nx-nx-welcome> <router-outlet></router-outlet>
+
+<router-outlet></router-outlet>
+<nx-vector-interactive (mousemove)="onMouseMove($event)" style="width:100%;height:100vh;" >
+    <nx-vector-button (click)="addWall()" [coords]="{x:10,y:50}" label="Add One"></nx-vector-button>
+    <ng-container>
+        <nx-wall 
+        (resize)="onResize($event)"
+        [id]="wall.id"
+        (selected)="onWallSelected($event)" *ngFor="let wall of walls" [coords]="wall.coords"></nx-wall>
+    </ng-container>
+</nx-vector-interactive>

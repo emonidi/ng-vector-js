@@ -1,0 +1,22 @@
+<ng-container>
+    <nx-vector-controll-point 
+        [visible]="souldShowControlPoints" 
+        [coords]="{x:_coords!.x1,y:_coords!.y1}" 
+        (onChange)="onPointChange($event,0)"
+    ></nx-vector-controll-point>
+    <nx-vector-line 
+        [strokeWidth]="strokeWidth" 
+        [coords]="_coords"
+        (click)="onLineClick($event)"
+        (mouseover)="onHoverIn($event)"
+        (mouseout)="onHoverOut($event)"
+        (mousedown)="onMouseDown()"
+        (mouseup)="onMouseUp()"
+        [class]="'wall'"
+    ></nx-vector-line>
+    <nx-vector-controll-point 
+        [visible]="souldShowControlPoints" 
+        [coords]="{x:_coords!.x2,y:_coords!.y2}" 
+        (onChange)="onPointChange($event,1)"
+    ></nx-vector-controll-point>
+</ng-container>
