@@ -1,0 +1,18 @@
+<ng-template #point>
+  <svg:g (mouseover)="onMouseover($event)" (mouseout)="onMouseout($event)" (mouseup)="omMouseUp($event)">
+    <svg:circle
+      [attr.cx]="_coords.x"
+      [attr.cy]="_coords.y"
+      [attr.r]="outerRadius"
+      [attr.fill]="'transparent'"
+      [attr.stroke]="color"
+      *ngIf="hovered"
+    ></svg:circle>
+    <svg:circle
+      [attr.cx]="_coords.x"
+      [attr.cy]="_coords.y"
+      [attr.r]="innerRadius"
+      [attr.fill]="color"
+    ></svg:circle>
+  </svg:g>
+</ng-template>

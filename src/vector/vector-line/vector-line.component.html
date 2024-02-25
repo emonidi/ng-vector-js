@@ -1,0 +1,13 @@
+<ng-template #line>
+    <svg:line 
+        [attr.x1]="_coords.x1" 
+        [attr.x2]="_coords.x2" 
+        [attr.y1]="_coords.y1" 
+        [attr.y2]="_coords.y2" 
+        [attr.stroke]="stroke"
+        (click)="onClick($event)"    
+        (mouseover)="onMouseOver($event)"
+        (mouseout)="onMouseout($event)"
+        (moousedown)="onMousedown($event)"
+    ></line>
+</ng-template>

@@ -23,9 +23,8 @@ export class VectorButtonComponent implements AfterViewChecked {
   ngAfterViewChecked() {
     if (!this.button && this.vectorService.interactive) {
       this.button = this.vectorService.interactive.button(this.coords?.x, this.coords?.y, this.label)
-      console.log(this.button)
       this.button.root.addEventListener("click", (ev: any) => {
-        console.log("click")
+       
         this.click.emit(this.button);
       })
     }

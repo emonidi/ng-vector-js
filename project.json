@@ -25,9 +25,7 @@
     },
     "build-rs": {
       "executor": "@nx/rspack:rspack",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "target": "web",
@@ -35,10 +33,7 @@
         "main": "src/main.ts",
         "tsConfig": "tsconfig.app.json",
         "rspackConfig": "rspack.config.js",
-        "assets": [
-          "src/favicon.ico",
-          "src/assets"
-        ]
+        "assets": ["src/favicon.ico", "src/assets"]
       },
       "configurations": {
         "development": {
@@ -169,6 +164,53 @@
         }
       },
       "defaultConfiguration": "production"
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "./.storybook",
+        "browserTarget": "nx:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/nx",
+        "configDir": "./.storybook",
+        "browserTarget": "nx:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "test-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "test-storybook -c ./.storybook --url=http://localhost:4400"
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "nx:build-storybook",
+        "staticFilePath": "dist/storybook/nx"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "nx:build-storybook:ci"
+        }
+      }
     }
   }
 }

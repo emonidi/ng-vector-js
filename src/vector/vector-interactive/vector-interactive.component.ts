@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VectorService } from '../vector-service/vector-service.service';
 
@@ -10,23 +10,21 @@ import { VectorService } from '../vector-service/vector-service.service';
   styleUrl: './vector-interactive.component.css',
   
 })
-export class VectorInteractiveComponent implements AfterViewInit{
+export class VectorInteractiveComponent{
 
   @Input() style:string | undefined;
   @ViewChild("interactive") interactive: any | undefined;
   @ViewChildren("content") children: any;
-  constructor(private vectorService:VectorService){
-      
+  @Input() width:number | undefined;
+  @Input() height:number | undefined;
+
+  constructor(private vectorService:VectorService, private ref: ViewContainerRef){
+       
   }
 
-  ngAfterViewInit(): void {
-     this.vectorService.createInteractive(this.interactive!)
-     console.log(this.vectorService.interactive)
-     let {x,y,width,height} = this.interactive.nativeElement.getBoundingClientRect();
-  
-     this.vectorService.interactive.viewBox = `${x},${y},${width},${height}`;
-     if(this.style){
-        this.vectorService.interactive.style.cssText = this.style; 
-     }
+  ngOnInit(){
+   
   }
+
+ 
 }
