@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, Input, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VectorService } from '../vector-service/vector-service.service';
 
 @Component({
   selector: 'nx-vector-interactive',
@@ -18,7 +17,7 @@ export class VectorInteractiveComponent{
   @Input() width:number | undefined;
   @Input() height:number | undefined;
 
-  constructor(private vectorService:VectorService, private ref: ViewContainerRef){
+  constructor(private ref: ViewContainerRef){
        
   }
 

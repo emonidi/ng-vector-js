@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VectorService } from '../vector-service/vector-service.service';
 import { PointCoords } from '../vector-model/interfaces';
 import * as d3 from 'd3'
 
@@ -49,7 +48,7 @@ export class VectorControllPointComponent implements OnInit, OnDestroy {
   private controlPoint: any;
   private _visible = false;
   public _coords: PointCoords = {x:0,y:0};
-  constructor(private vectorService: VectorService, private ref: ViewContainerRef) { }
+  constructor(private ref: ViewContainerRef) { }
   
   
   ngOnDestroy(): void {

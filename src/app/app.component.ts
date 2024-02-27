@@ -7,11 +7,10 @@ import { RouterModule } from '@angular/router';
 
 import { VectorInteractiveComponent } from '../vector/vector-interactive/vector-interactive.component';
 import { LineCoordinates } from '../vector/vector-line/vector-line.component';
-import { VectorButtonComponent } from 'src/vector/vector-button/vector-button.component';
 import { CommonModule } from '@angular/common';
 import { WallComponent } from './wall/wall.component';
 import { v4 } from 'uuid';
-import { PointCoords, ZoomableDirective } from 'src/vector';
+import { PointCoords } from 'src/vector';
 import { UtilsService } from './utils.service';
 
 @Component({
@@ -20,9 +19,7 @@ import { UtilsService } from './utils.service';
     VectorInteractiveComponent,
     RouterModule,
     CommonModule,
-    VectorButtonComponent,
-    WallComponent,
-    ZoomableDirective,
+    WallComponent
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'nx-root',
@@ -38,12 +35,12 @@ export class AppComponent {
   private isCtrlOn = false;
 
   @HostListener('window:keydown.Alt', ['$event'])
-  onKeyDown($event) {
+  onKeyDown() {
     this.isCtrlOn = true;
   }
 
   @HostListener('window:keyup.Alt', ['$event'])
-  onKeyUp($event) {
+  onKeyUp() {
     this.isCtrlOn = false;
   }
 

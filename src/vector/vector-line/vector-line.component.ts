@@ -11,7 +11,6 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VectorService } from '../vector-service/vector-service.service';
 
 export interface LineCoordinates {
   x1: number;
@@ -61,7 +60,6 @@ export class VectorLineComponent {
   private line: any;
 
   constructor(
-    private vectorSerice: VectorService,
     private ref: ViewContainerRef
   ) {}
 

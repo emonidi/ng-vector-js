@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {VectorLineComponent,VectorControllPointComponent, LineCoordinates, VectorService, PointCoords} from '../../vector'
+import {VectorLineComponent,VectorControllPointComponent, LineCoordinates, PointCoords} from '../../vector'
 import * as d3 from 'd3';
 
 
@@ -28,7 +28,7 @@ export class WallComponent implements OnInit, OnDestroy{
   public souldShowControlPoints:boolean = false;
   public strokeWidth:number = 3;
   public _coords:LineCoordinates = {x1:0,x2:0,y1:0,y2:0};
-  constructor(private vectorService:VectorService,private containerRef : ViewContainerRef){
+  constructor(private containerRef : ViewContainerRef){
      this.drag = d3.drag();
   }
 
